@@ -12,8 +12,9 @@ fetch("https://v2.jokeapi.dev/joke/Programming?lang=es")
     .then((response) =>
         response.json())
     .then((data) => {
-        const pJoke = data.joke;
+        pButton.innerText = "Loading...";
         buttonJoke.addEventListener("click", () => {
+            const pJoke = data.joke;
             if (pJoke) {
                 pButton.innerText = pJoke;
             } else {
