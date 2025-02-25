@@ -3,7 +3,7 @@ const buttonJoke = document.getElementById("obtenerChiste");
 const pButton = document.getElementById("chiste");
 
 
-
+pButton.innerText = "";
 
 
 
@@ -12,16 +12,17 @@ fetch("https://v2.jokeapi.dev/joke/Programming?lang=es")
     .then((response) =>
         response.json())
     .then((data) => {
-        pButton.innerText = "Loading...";
         buttonJoke.addEventListener("click", () => {
-            const pJoke = data.joke;
-            if (pJoke) {
-                pButton.innerText = pJoke;
-            } else {
-                pButton.innerText = data.setup + " " + data.delivery
-            }
-
-        });
+            pButton.innerText = "Loading...";
+            setTimeout(() => {
+                const pJoke = data.joke;
+                if (pJoke) {
+                    pButton.innerText = pJoke;
+                } else {
+                    pButton.innerText = data.setup + " " + data.delivery
+                }
+            }, 5000);
+        })
     })
     .catch((error) => console.error(error))
 
